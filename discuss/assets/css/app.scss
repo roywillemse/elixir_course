@@ -1,5 +1,12 @@
 /* This file is for your main application css. */
-@import "./phoenix.css";
+@import './phoenix.css';
+
+.invalid-feedback {
+  color: red;
+  text-transform: capitalize;
+  font-size: 15px;
+  padding-top: 10px;
+}
 
 /* Alerts and form errors */
 .alert {
