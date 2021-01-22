@@ -1,12 +1,12 @@
-defmodule Community.News do
+defmodule Server.Links do
   @moduledoc """
-  The News context.
+  The Links context.
   """
 
   import Ecto.Query, warn: false
-  alias Community.Repo
+  alias Server.Repo
 
-  alias Community.News.Link
+  alias Server.Links.Link
 
   @doc """
   Returns the list of links.
@@ -17,13 +17,8 @@ defmodule Community.News do
       [%Link{}, ...]
 
   """
-  def list_links(args) do
-    IO.inspect(args)
-
-    case args do
-      %{first: first} -> Link |> limit(^first) |> Repo.all()
-      _ -> Repo.all(Link)
-    end
+  def list_links do
+    Repo.all(Link)
   end
 
   @doc """
