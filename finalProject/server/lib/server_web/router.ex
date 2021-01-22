@@ -12,6 +12,6 @@ defmodule ServerWeb.Router do
       schema: Serverweb.Schema,
       interface: :playground
 
-    forward "/", Absinthe.Plug, schema: Serverweb.Schema
+    forward "/graphql", Absinthe.Plug, schema: Serverweb.Schema
   end
 end
