@@ -2,6 +2,7 @@ defmodule ServerWeb.Router do
   use ServerWeb, :router
 
   pipeline :graphql do
+    plug Corsica, origins: "*"
     plug :accepts, ["json"]
   end
 
@@ -12,6 +13,6 @@ defmodule ServerWeb.Router do
       schema: Serverweb.Schema,
       interface: :playground
 
-    forward "/graphql", Absinthe.Plug, schema: Serverweb.Schema
+    forward "/", Absinthe.Plug, schema: Serverweb.Schema
   end
 end

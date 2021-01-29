@@ -45,7 +45,8 @@ defmodule Server.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
-      {:poison, "~> 2.1.0"}
+      {:poison, "~> 2.1.0"},
+      {:corsica, "~> 1.1.3"}
     ]
   end
 
