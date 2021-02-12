@@ -2,7 +2,7 @@ defmodule ServerWeb.Router do
   use ServerWeb, :router
 
   pipeline :graphql do
-    plug Corsica, origins: "*"
+    plug Corsica, origins: "*", log: [rejected: :error], allow_headers: :all
     plug :accepts, ["json"]
   end
 
