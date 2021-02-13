@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import RouteContainer from './RouteContainer';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/',
@@ -12,7 +12,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <RouteContainer />
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
