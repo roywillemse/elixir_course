@@ -18,7 +18,7 @@ defmodule Server.Products do
 
   """
   def list_products do
-    Repo.all(Product)
+    Repo.all(Product) |> Repo.preload(:category)
   end
 
   @doc """

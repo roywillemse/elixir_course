@@ -17,7 +17,7 @@ defmodule Server.Products.Product do
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:name, :description])
-    |> validate_required([:name, :description])
+    |> cast(attrs, [:name, :description, :slug, :price])
+    |> validate_required([:name, :description, :slug, :price])
   end
 end

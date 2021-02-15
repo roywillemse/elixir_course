@@ -18,7 +18,7 @@ defmodule Server.Categories do
 
   """
   def list_categories do
-    Repo.all(Category)
+    Repo.all(Category) |> Repo.preload(:comments)
   end
 
   @doc """

@@ -1,4 +1,4 @@
-defmodule Serverweb.Resolvers.LinkResolver do
+defmodule ServerWeb.Resolvers.LinkResolver do
   alias Server.Links
 
   def all_links(_root, _args, _info) do

@@ -1,6 +1,5 @@
 defmodule Server.Repo.Migrations.CreateProducts do
   use Ecto.Migration
-  alias Server.Categories.Category
 
   def change do
     create table(:products) do
@@ -9,8 +8,7 @@ defmodule Server.Repo.Migrations.CreateProducts do
       add :description, :text
       add :price, :decimal
       add :images, {:array, :string}
-      add has_one :category, Category
-
+      add :category_id, references(:categories, on_delete: :nothing)
       timestamps()
     end
 

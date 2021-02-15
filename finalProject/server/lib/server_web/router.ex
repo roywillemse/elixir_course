@@ -10,9 +10,9 @@ defmodule ServerWeb.Router do
     pipe_through :graphql
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: Serverweb.Schema,
+      schema: ServerWeb.Schema,
       interface: :playground
 
-    forward "/", Absinthe.Plug, schema: Serverweb.Schema
+    forward "/", Absinthe.Plug, schema: ServerWeb.Schema
   end
 end
