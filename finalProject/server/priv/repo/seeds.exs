@@ -2,9 +2,16 @@ alias Server.Categories.Category
 alias Server.Products.Product
 alias Server.Repo
 
-smartPhone =
-  %Category{name: "Smartphones", slug: "smartphones", description: "List of all smartphones"}
+smart_phone_cat =
+  %Category{name: "Smartphones", slug: "smartphones", description: "Lijst van alle smartphones"}
   |> Repo.insert!()
+
+%Category{
+  name: "Tablets",
+  slug: "tablets",
+  description: "Lijst van alle tablets die wij verkopen"
+}
+|> Repo.insert!()
 
 %Product{
   name: "Apple iPhone 12 - 64GB - Zwart",
@@ -18,6 +25,6 @@ smartPhone =
     "https://media.s-bol.com/7pMgZxEX2GgQ/550x587.jpg",
     "https://media.s-bol.com/gnywoWWA5oLj/550x550.jpg"
   ],
-  category: smartPhone
+  category: smart_phone_cat
 }
 |> Repo.insert!()
