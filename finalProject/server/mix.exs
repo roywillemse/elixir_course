@@ -35,6 +35,7 @@ defmodule Server.MixProject do
     [
       {:phoenix, "~> 1.5.7"},
       {:phoenix_ecto, "~> 4.1"},
+      {:ecto, "~> 3.5.6"},
       {:ecto_sql, "~> 3.4"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_live_dashboard, "~> 0.4"},
@@ -43,6 +44,7 @@ defmodule Server.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      {:plug, "~> 1.9"},
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
       {:poison, "~> 2.1.0"},

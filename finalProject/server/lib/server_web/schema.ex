@@ -5,19 +5,26 @@ defmodule ServerWeb.Schema do
   alias ServerWeb.Resolvers
 
   query do
-    @desc "Get all Links"
-    field :all_links, list_of(:link) do
-      resolve(&Resolvers.LinkResolver.all_links/3)
-    end
-
     @desc "Get all Categories"
     field :all_categories, list_of(:category) do
       resolve(&Resolvers.CategoryResolver.all_categories/3)
     end
 
+    @desc "Get one Category"
+    field :one_category, :category do
+      arg :id, non_null(:id)
+      resolve(&Resolvers.CategoryResolver.one_category/3)
+    end
+
     @desc "Get all Products"
     field :all_products, list_of(:product) do
       resolve(&Resolvers.ProductResolver.all_products/3)
+    end
+
+    @desc "Get one Product"
+    field :one_product, :product do
+      arg :id, non_null(:id)
+      resolve(&Resolvers.ProductResolver.one_product/3)
     end
   end
 
@@ -26,8 +33,6 @@ defmodule ServerWeb.Schema do
     field :create_link, :link do
       arg(:url, non_null(:string))
       arg(:description, non_null(:string))
-
-      resolve(&Resolvers.LinkResolver.create_link/3)
     end
   end
 end
