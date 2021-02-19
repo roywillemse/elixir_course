@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Navbar from '../components/shared/Navbar';
 import Hero from '../components/home/Hero';
 import Footer from '../components/shared/Footer';

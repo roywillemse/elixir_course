@@ -12,7 +12,7 @@ defmodule ServerWeb.Schema do
 
     @desc "Get one Category"
     field :one_category, :category do
-      arg :id, non_null(:id)
+      arg :slug, non_null(:string)
       resolve(&Resolvers.CategoryResolver.one_category/3)
     end
 
@@ -29,10 +29,5 @@ defmodule ServerWeb.Schema do
   end
 
   mutation do
-    @desc "Create new link"
-    field :create_link, :link do
-      arg(:url, non_null(:string))
-      arg(:description, non_null(:string))
-    end
   end
 end

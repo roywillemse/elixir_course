@@ -7,9 +7,9 @@ defmodule ServerWeb.Resolvers.CategoryResolver do
   end
 
   @spec one_category(any, any, any) :: {:error, any} | {:ok, %Category{}}
-  def one_category(_root, %{id: id}, _info) do
-    case Category.get_category(id) do
-      nil -> {:error, "Category doesn't exist"}
+  def one_category(_root, %{slug: slug}, _info) do
+    case Category.get_category_by_slug(slug) do
+      nil -> {:error, "Category doesn't exist with this slug"}
       category -> {:ok, category}
     end
   end

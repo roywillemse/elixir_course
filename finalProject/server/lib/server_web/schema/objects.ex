@@ -18,10 +18,4 @@ defmodule ServerWeb.Schema.Objects do
     field :slug, non_null(:string)
     field :products, list_of(:product)
   end
-
-  object :link do
-    field :id, non_null(:id)
-    field :url, non_null(:string)
-    field :description, non_null(:string)
-  end
 end

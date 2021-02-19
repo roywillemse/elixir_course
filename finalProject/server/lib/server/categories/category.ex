@@ -56,6 +56,12 @@ defmodule Server.Categories.Category do
     |> Repo.preload(:products)
   end
 
+  def get_category_by_slug(slug) do
+    __MODULE__
+    |> Repo.get_by(slug: slug)
+    |> Repo.preload(:products)
+  end
+
   @doc """
   Creates a category.
 
