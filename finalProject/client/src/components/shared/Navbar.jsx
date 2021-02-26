@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useRef, useEffect } from 'react';
-import { Link, NavLink, useRouteMatch } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
+import { Link, NavLink, useRouteMatch, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useQuery } from '@apollo/client';
 import { allCategoriesQuery } from '../../graphql/queries/query';
@@ -12,10 +11,18 @@ const StyledButton = styled.button`
 
 export default function Navbar() {
   const { loading, data } = useQuery(allCategoriesQuery);
+  const history = useHistory();
   const [openDropdown, setOpenDropdown] = useState(false);
+  const [searchParam, setSearchParam] = useState('');
   const dropdownRef = useRef(null);
   useDetectClickOutside(dropdownRef, () => setOpenDropdown(false));
   const isCategoryRoute = useRouteMatch('/category/:category_slug');
+
+  const onHandleSubmit = (e) => {
+    e.preventDefault();
+    history.push({ pathname: `/search`, search: `?name=${searchParam}` });
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -75,15 +82,17 @@ export default function Navbar() {
               </ul>
             </li>
           </ul>
-          <form className="d-flex">
+          <form className="d-flex" onSubmit={onHandleSubmit}>
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Zoeken"
               aria-label="Search"
+              value={searchParam}
+              onChange={(e) => setSearchParam(e.target.value)}
             />
-            <button className="btn btn-outline-success" type="submit">
-              Search
+            <button type="submit" className="btn btn-outline-primary">
+              <i className="fas fa-search"></i>
             </button>
           </form>
         </div>

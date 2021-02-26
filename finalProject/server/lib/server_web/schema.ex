@@ -23,7 +23,7 @@ defmodule ServerWeb.Schema do
 
     @desc "Get one Product"
     field :one_product, :product do
-      arg :id, non_null(:id)
+      arg :slug, non_null(:string)
       resolve(&Resolvers.ProductResolver.one_product/3)
     end
   end

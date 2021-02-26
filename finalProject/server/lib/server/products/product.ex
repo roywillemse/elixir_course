@@ -54,6 +54,9 @@ defmodule Server.Products.Product do
   """
   def get_product(id), do: __MODULE__ |> Repo.get(id) |> Repo.preload(:category)
 
+  def get_product_by_slug(slug),
+    do: __MODULE__ |> Repo.get_by(slug: slug) |> Repo.preload(:category)
+
   @doc """
   Creates a product.
 

@@ -7,8 +7,8 @@ defmodule ServerWeb.Resolvers.ProductResolver do
   end
 
   @spec one_product(any, any, any) :: {:error, any} | {:ok, %Product{}}
-  def one_product(_root, %{id: id}, _info) do
-    case Product.get_product(id) do
+  def one_product(_root, %{slug: slug}, _info) do
+    case Product.get_product_by_slug(slug) do
       nil -> {:error, "Product doesn't exist"}
       product -> {:ok, product}
     end

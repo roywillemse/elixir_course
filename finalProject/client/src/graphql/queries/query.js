@@ -5,12 +5,31 @@ export const allProductsQuery = gql`
     allProducts {
       id
       name
-      description
+      slug
       price
+      description
       images
       category {
         id
         name
+      }
+    }
+  }
+`;
+
+export const oneProductQuery = gql`
+  query Product($slug: String!) {
+    oneProduct(slug: $slug) {
+      id
+      name
+      slug
+      price
+      description
+      images
+      category {
+        id
+        name
+        slug
       }
     }
   }
@@ -25,7 +44,10 @@ export const allCategoriesQuery = gql`
       products {
         id
         name
+        slug
+        price
         description
+        images
       }
     }
   }
@@ -42,6 +64,9 @@ export const oneCategoryQuery = gql`
         id
         name
         slug
+        price
+        description
+        images
       }
     }
   }
