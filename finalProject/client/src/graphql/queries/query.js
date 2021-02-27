@@ -31,6 +31,25 @@ export const oneProductQuery = gql`
         name
         slug
       }
+      reviews {
+        id
+        name
+        rating
+        description
+      }
+    }
+  }
+`;
+
+export const searchProducts = gql`
+  query searchProducts($search: String!) {
+    searchProducts(search: $search) {
+      id
+      name
+      slug
+      price
+      description
+      images
     }
   }
 `;

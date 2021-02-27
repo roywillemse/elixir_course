@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { useQuery } from '@apollo/client';
 import { allCategoriesQuery } from '../../graphql/queries/query';
 import useDetectClickOutside from '../../hooks/useDetectClickOutside';
+import useQuerystring from '../../hooks/useQuerystring';
+
 const StyledButton = styled.button`
   background: none;
   border: none;
@@ -12,8 +14,9 @@ const StyledButton = styled.button`
 export default function Navbar() {
   const { loading, data } = useQuery(allCategoriesQuery);
   const history = useHistory();
+  const search = useQuerystring('name');
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [searchParam, setSearchParam] = useState('');
+  const [searchParam, setSearchParam] = useState(search || '');
   const dropdownRef = useRef(null);
   useDetectClickOutside(dropdownRef, () => setOpenDropdown(false));
   const isCategoryRoute = useRouteMatch('/category/:category_slug');

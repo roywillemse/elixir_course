@@ -3,6 +3,7 @@ defmodule Server.Products.Product do
   import Ecto.Changeset
   import Ecto.Query, warn: false
   alias Server.Categories.Category
+  alias Server.Reviews.Review
   alias Server.Repo
 
   schema "products" do
@@ -12,6 +13,7 @@ defmodule Server.Products.Product do
     field :price, :decimal
     field :images, {:array, :string}
     belongs_to :category, Category
+    has_many :reviews, Review
 
     timestamps()
   end
@@ -38,6 +40,10 @@ defmodule Server.Products.Product do
     |> Repo.preload(:category)
   end
 
+  def search_products(search) do
+    Repo.all(from p in __MODULE__, where: like(p.slug, ^"%#{search}%"))
+  end
+
   @doc """
   Gets a single product.
 
@@ -52,10 +58,11 @@ defmodule Server.Products.Product do
       ** (Ecto.NoResultsError)
 
   """
-  def get_product(id), do: __MODULE__ |> Repo.get(id) |> Repo.preload(:category)
+  def get_product(id),
+    do: __MODULE__ |> Repo.get(id) |> Repo.preload(:category) |> Repo.preload(:reviews)
 
   def get_product_by_slug(slug),
-    do: __MODULE__ |> Repo.get_by(slug: slug) |> Repo.preload(:category)
+    do: __MODULE__ |> Repo.get_by(slug: slug) |> Repo.preload(:category) |> Repo.preload(:reviews)
 
   @doc """
   Creates a product.
