@@ -18,6 +18,9 @@ defmodule Deck do
 
     suits = ["S", "C", "H", "D"]
 
+    # // Enum.zip misschien alternatief voor dubbele for
+
+    # nadenken over betere manier om dit op te slaan, miss map met losse suit en value
     for suit <- suits, value <- values do
       "#{value}#{suit}"
     end
