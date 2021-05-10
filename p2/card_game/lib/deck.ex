@@ -1,6 +1,6 @@
 defmodule Deck do
-  defp create_deck do
-    values = [
+  def values do
+    [
       "2",
       "3",
       "4",
@@ -15,15 +15,18 @@ defmodule Deck do
       "K",
       "A"
     ]
+  end
 
+  defp create_deck do
     suits = ["S", "C", "H", "D"]
 
-    # // Enum.zip misschien alternatief voor dubbele for
-
-    # nadenken over betere manier om dit op te slaan, miss map met losse suit en value
-    for suit <- suits, value <- values do
-      "#{value}#{suit}"
+    for suit <- suits, value <- values() do
+      %{value: value, suit: suit}
     end
+  end
+
+  def print_pretty(deck) do
+    Enum.map(deck, fn card -> "#{card.value}#{card.suit}" end)
   end
 
   def shuffle(deck) do
@@ -32,6 +35,19 @@ defmodule Deck do
 
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
+  end
+
+  def deal_multiple(deck, hand_size, amount_players) do
+    result =
+      Enum.map(
+        1..amount_players,
+        fn _ ->
+          deck
+          |> deal(hand_size)
+        end
+      )
+
+    IO.inspect(result)
   end
 
   def shuffled_deck() do
