@@ -19,6 +19,7 @@ defmodule Deck do
 
   defp create_deck do
     suits = ["S", "C", "H", "D"]
+    my_values
 
     for suit <- suits, value <- values() do
       %{value: value, suit: suit}
